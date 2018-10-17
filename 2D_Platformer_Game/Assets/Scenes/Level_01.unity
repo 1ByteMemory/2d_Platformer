@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 828855833}
   - component: {fileID: 828855832}
   - component: {fileID: 828855837}
+  - component: {fileID: 828855838}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -306,6 +307,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  jumpPower: 5
+  maxJumpHieght: 5
+--- !u!114 &828855838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828855831}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77208d0303f39144480b6e44f851f260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6
+  jumpSpeed: 8
+  gravity: 20
 --- !u!1001 &1034416223
 Prefab:
   m_ObjectHideFlags: 0
