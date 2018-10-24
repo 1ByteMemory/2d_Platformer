@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 3e93dc8d59d9b0b47bc5a05434dfaca4
+  productGUID: 02a5792b535ca8f4290fb11d38929e2e
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: 2D_Platformer_Game
+  productName: 2D PlatformerGame
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -617,8 +617,8 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 7efcda1b-46a4-4de3-aad6-f59be6dd38ff
-  projectName: 2D_Platformer_Game
+  cloudProjectId: 86fce409-eb47-44bc-8691-049537f86a25
+  projectName: 2D PlatformerGame
   organizationId: flying_electricity
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
