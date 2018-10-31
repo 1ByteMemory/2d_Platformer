@@ -6,42 +6,43 @@ public class PlayerMovement : MonoBehaviour {
 
     CharacterController Cc;
     public float playerSpeed = 5f;
-    public float jumpSpees = 5f;
-    public float gravity = 20f;
-    public float maxJumpHieght = 2f;
+    public float jumpPower = 5f;
+    public float weigth = 5f;
+    public float maxAirTime = 1f;
 
-    private float airTime = 0f;
-    float y;
-
+    float airTime = 0f;
+    bool fall = true;
 
 	// Use this for initialization
 	void Start () {
         Cc = GetComponent<CharacterController>();
-        airTime = maxJumpHieght + 1f;
-        y = 1f;
+        //airTime = maxJumpHieght + 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
         float h = Input.GetAxis("Horizontal");
-
-
-        if (!Cc.isGrounded)
-        {
-            airTime += 1 * Time.deltaTime;
-            if (airTime >= maxJumpHieght)
-            {
-                y = 0f;
-                Cc.Move(new Vector3(h * playerSpeed * Time.deltaTime, -gravity * Time.deltaTime, 0));
-            }
-        }
+        bool jumpButton = Input.GetButton("Jump");
 
         if (Cc.isGrounded)
         {
+            Cc.Move(new Vector3(h * playerSpeed * Time.deltaTime, 0, 0));
             airTime = 0f;
-            y = Input.GetAxis("Jump");
-            Cc.Move(new Vector3(h * playerSpeed * Time.deltaTime, y * jumpSpees * Time.deltaTime, 0));
+            fall = false;
+        }
+
+        if (jumpButton && airTime <= maxAirTime && fall == false)
+        {
+            airTime += 1 * Time.deltaTime;
+            Cc.Move(new Vector3(h * playerSpeed * Time.deltaTime, jumpPower * Time.deltaTime, 0));
+            if (Input.GetButtonUp("Jump")) { fall = true; }
+        }
+        
+        if (!Cc.isGrounded)
+        {
+            airTime += 1 * Time.deltaTime;
+            Cc.Move(new Vector3(h * playerSpeed * Time.deltaTime, -weigth * Time.deltaTime, 0));
         }
     }
 }
