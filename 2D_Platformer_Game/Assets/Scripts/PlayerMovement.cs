@@ -4,45 +4,66 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    // Definitions
     CharacterController Cc;
     public float playerSpeed = 5f;
-    public float jumpPower = 5f;
-    public float weigth = 5f;
-    public float maxAirTime = 1f;
+    public float gravity = 1f;
+    public float jumpHieght = 3f;
+    public float jumpPower = 3;
 
-    float airTime = 0f;
-    bool fall = true;
-
-	// Use this for initialization
+    float airTime;
+    float jump;
+	
 	void Start () {
+        airTime = jumpPower;
+        // Asigns the character controller component.
         Cc = GetComponent<CharacterController>();
-        //airTime = maxJumpHieght + 1f;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        float h = Input.GetAxis("Horizontal");
-        bool jumpButton = Input.GetButton("Jump");
-
-        if (Cc.isGrounded)
-        {
-            Cc.Move(new Vector3(h * playerSpeed * Time.deltaTime, 0, 0));
-            airTime = 0f;
-            fall = false;
-        }
-
-        if (jumpButton && airTime <= maxAirTime && fall == false)
-        {
-            airTime += 1 * Time.deltaTime;
-            Cc.Move(new Vector3(h * playerSpeed * Time.deltaTime, jumpPower * Time.deltaTime, 0));
-            if (Input.GetButtonUp("Jump")) { fall = true; }
-        }
-        
+        // Everything is in functions to try and keep it neat.
+        Move();
+    }
+    
+    void Move()
+    {
+        // Decrements the airTime while in air.
         if (!Cc.isGrounded)
         {
-            airTime += 1 * Time.deltaTime;
-            Cc.Move(new Vector3(h * playerSpeed * Time.deltaTime, -weigth * Time.deltaTime, 0));
+            airTime -= 1 * Time.deltaTime;
         }
+
+        // Left Right Input (horizontal Input).
+        float hInput = Input.GetAxisRaw("Horizontal");
+
+
+        // Stops the player from jumping too high.
+        if (airTime <= 0)
+        {
+            jump = 0;
+        }
+        if (airTime > 0)
+        {
+            jump = Input.GetAxisRaw("Jump");
+        }
+
+        // Reset airTime.
+        if (Cc.isGrounded) { airTime = jumpPower; }
+
+
+        // MOVES
+        Cc.Move(new Vector3(hInput * playerSpeed * Time.deltaTime, jump * jumpHieght * Time.deltaTime, 0));
+        
+
+
+        // Falling
+        if (!Cc.isGrounded && jump == 0)
+        {
+            //float adjustedSpeed = playerSpeed / 2; // Moves player with reduced speed.
+            Cc.Move(new Vector3(0, -gravity * Time.deltaTime, 0));
+        }
+        
     }
 }
