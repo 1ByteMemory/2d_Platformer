@@ -1,20 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Lives : MonoBehaviour {
     
     public int playerLives = 3;
+    
 
-    public void PlayerLives (int amount)
+    private void OnControllerColliderHit(ControllerColliderHit collision)
     {
-        playerLives -= amount;
 
-        // Death Function
-        if (playerLives <= 0)
+        if (collision.collider.tag == "death")
         {
-            // restart the scene.
+            playerLives -= 1;
+
+
+            // Death Function
+            if (playerLives <= 0)
+            {
+                FindObjectOfType<GameManager>().EndGame();
+            }
         }
     }
-
 }
