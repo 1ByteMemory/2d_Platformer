@@ -12,13 +12,15 @@ public class BrackPlatform : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-	}
+        rb.isKinematic = true;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject == breaker)
         {
             rb.useGravity = true;
+            rb.isKinematic = false;
         }
     }
 }
