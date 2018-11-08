@@ -3,17 +3,17 @@
 public class PlayerMovement : MonoBehaviour {
 
     // Definitions
-    CharacterController Cc;
-    public float playerSpeed = 5f;
-    public float gravity = 1f;
-    public float jumpHieght = 3f;
-    public float jumpPower = 3;
+    CharacterController Cc;                                         // Reference for the character controller
+    public float playerSpeed = 5f;                                  // Players movment speed
+    public float gravity = 1f;                                      // How fast the player will fall
+    public float jumpHieght = 3f;                                   // How high the player can jump
+    public float jumpPower = 3;                                     // How fast the player jumps
 
-    float airTime;
-    float jump;
+    float airTime;                                                  // How long the player is in the air
+    float jump;                                                     // Float for the jump input. Up here as it nneds to stay the same between updates
 	
 	void Start () {
-        airTime = jumpPower;
+        airTime = jumpPower;                                        // 
 
         // Asigns the character controller component.
         Cc = GetComponent<CharacterController>();
