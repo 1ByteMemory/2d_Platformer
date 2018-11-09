@@ -2,22 +2,13 @@
 
 public class Key : MonoBehaviour {
 
-    public GameObject door;
+    // The script for the lock and key puzzle.
 
-    private bool called = false;
-
-    private void OnTriggerEnter(Collider collision)
+    public GameObject door;                             // Reference to the door that opens.
+    
+    private void OnTriggerEnter(Collider collision)     // When something enters the trigger of this object.
     {
-        Destroy(gameObject);
-        UnlockDoor(door);
-    }
-
-    public void UnlockDoor (GameObject door)
-    {
-        if (!called)
-        {
-            Destroy(door);
-            called = true;
-        }
+        Destroy(gameObject);                            // Destories this object
+        Destroy(door);                                  // Destroies the door.
     }
 }

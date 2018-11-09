@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  gravity: 7
+  gravity: -7
   jumpHieght: 7
   jumpPower: 0.3
 --- !u!114 &114979430393293762

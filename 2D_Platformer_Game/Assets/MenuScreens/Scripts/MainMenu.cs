@@ -5,21 +5,29 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
-    public int firstLevelIndex = 1;
+    // The Main menu script.
+    // These functions are called by the buttons in the UI.
 
-    public void PlayGame ()
+    public int firstLevelIndex = 1;                         // The index of the first level. (could be different if there are tutorials
+
+    private void Start()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.buildIndex + 1);
+        Cursor.visible = true;                              // Shows the cursor.
     }
 
-    public void Resart ()
+    public void PlayGame ()                                 // Called to play the game.
     {
-        SceneManager.LoadScene(firstLevelIndex);
+        Scene scene = SceneManager.GetActiveScene();        // Gets the currently active scene.
+        SceneManager.LoadScene(scene.buildIndex + 1);       // Loads the next scene in the index build.
     }
 
-    public void QuitGame ()
+    public void Resart ()                                   // Called to restart the game.
     {
-        Application.Quit();
+        SceneManager.LoadScene(firstLevelIndex);            // Loads the first level.
+    }
+
+    public void QuitGame ()                                 // Called to quit the game.
+    {
+        Application.Quit();                                 // Quits the game.
     }
 }
